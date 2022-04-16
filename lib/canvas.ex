@@ -7,25 +7,23 @@ defmodule Canvas do
   if it comes from the database, an external API or others.
   """
   alias Canvas.Rectangles
+  alias Canvas.Rectangles.Rectangle
 
   @doc """
   It draw a rectangle in the canvas
 
   ## Attributes
-  TODO
+  - `x` :integer, the horizontal position of the top right corner of the rectangle, **Required**
+  - `y` :integer, the vertical position of the top right corner of the rectangle, **Required**
+  - `width` :integer, the width of the rectangle, **Required**
+  - `height` :integer, the height of the rectangle, **Required**
+  - `fill_char` :string, the character to fill the rectangle with
+  - `outline_char` :string, the character to draw the outline of the rectangle
 
+  **Note:** Either `fill_char` or `outline_char` should be specifyed.
   """
-  # @spec draw_rectangle(
-  #         pos_integer(),
-  #         pos_integer(),
-  #         pos_integer(),
-  #         pos_integer(),
-  #         String.t(),
-  #         String.t()
-  #       ) :: {:ok, Rectangle.t()} || {:error, Ecto.Changeset.t()}
-  def draw_rectangle(params) do
-    Rectangles.create_rectangle(params)
-  end
+  @spec draw_rectangle(map) :: {:ok, Rectangle.t()} | {:error, Ecto.Changeset.t()}
+  defdelegate draw_rectangle(params), to: Rectangles, as: :create_rectangle
 
   @doc """
   Looks up `Application` config or raises if keyspace is not configured.
