@@ -16,7 +16,7 @@ defmodule CanvasWeb.Router do
 
   scope "/", CanvasWeb do
     pipe_through :browser
-
+    get "/rectangles", RectangleController, :index
     get "/", PageController, :index
   end
 

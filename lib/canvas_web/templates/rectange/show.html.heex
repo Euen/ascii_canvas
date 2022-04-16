@@ -1,0 +1,38 @@
+<h1>Show Rectangle</h1>
+
+<ul>
+
+  <li>
+    <strong>X:</strong>
+    <%= @Rectangle.x %>
+  </li>
+
+  <li>
+    <strong>Y:</strong>
+    <%= @Rectangle.y %>
+  </li>
+
+  <li>
+    <strong>Width:</strong>
+    <%= @Rectangle.width %>
+  </li>
+
+  <li>
+    <strong>Height:</strong>
+    <%= @Rectangle.height %>
+  </li>
+
+  <li>
+    <strong>Fill char:</strong>
+    <%= @Rectangle.fill_char %>
+  </li>
+
+  <li>
+    <strong>Outline char:</strong>
+    <%= @Rectangle.outline_char %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.Rectangle_path(@conn, :edit, @Rectangle) %></span> |
+<span><%= link "Back", to: Routes.Rectangle_path(@conn, :index) %></span>

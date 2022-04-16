@@ -1,0 +1,36 @@
+<h1>Listing Rectangles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>X</th>
+      <th>Y</th>
+      <th>Width</th>
+      <th>Height</th>
+      <th>Fill char</th>
+      <th>Outline char</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for Rectangle <- @rectangles do %>
+    <tr>
+      <td><%= Rectangle.x %></td>
+      <td><%= Rectangle.y %></td>
+      <td><%= Rectangle.width %></td>
+      <td><%= Rectangle.height %></td>
+      <td><%= Rectangle.fill_char %></td>
+      <td><%= Rectangle.outline_char %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.Rectangle_path(@conn, :show, Rectangle) %></span>
+        <span><%= link "Edit", to: Routes.Rectangle_path(@conn, :edit, Rectangle) %></span>
+        <span><%= link "Delete", to: Routes.Rectangle_path(@conn, :delete, Rectangle), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Rectangle", to: Routes.Rectangle_path(@conn, :new) %></span>

@@ -1,0 +1,5 @@
+<h1>Edit Rectangle</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.Rectangle_path(@conn, :update, @Rectangle)) %>
+
+<span><%= link "Back", to: Routes.Rectangle_path(@conn, :index) %></span>

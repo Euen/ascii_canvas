@@ -8,7 +8,9 @@
 import Config
 
 config :canvas,
-  ecto_repos: [Canvas.Repo]
+  ecto_repos: [Canvas.Repo],
+  canvas_max_width: 50,
+  canvas_max_height: 50
 
 # Configures the endpoint
 config :canvas, CanvasWeb.Endpoint,
