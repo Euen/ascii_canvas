@@ -88,6 +88,20 @@ defmodule Canvas.Rectangles do
   def delete_rectangle(%Rectangle{} = rectangle) do
     Repo.delete(rectangle)
   end
+  @doc """
+  Deletes all the Rectangles.
+
+  ## Examples
+
+      iex> delete_rectangles()
+      :ok
+
+  """
+  @spec delete_rectangles() :: :ok
+  def delete_rectangles() do
+    Repo.delete_all(Rectangle)
+    :ok
+  end
 
   @doc """
   Returns an `%Ecto.Changeset{}` for tracking Rectangle changes.

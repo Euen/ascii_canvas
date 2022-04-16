@@ -26,6 +26,13 @@ defmodule Canvas do
   defdelegate draw_rectangle(params), to: Rectangles, as: :create_rectangle
 
   @doc """
+  It clear the canvas deleting all the drawings
+  """
+  @spec clear_canvas() :: :ok
+  def clear_canvas() do
+    Rectangles.delete_rectangles()
+  end
+  @doc """
   Looks up `Application` config or raises if keyspace is not configured.
 
   ## Examples

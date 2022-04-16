@@ -13,4 +13,11 @@ defmodule Canvas.CanvasTest do
       assert {:ok, %Rectangle{}} = Canvas.draw_rectangle(params)
     end)
   end
+
+  test "clear the canvas" do
+    Canvas.draw_rectangle(%{x: 2, y: 3, width: 20, height: 5, fill_char: "X"})
+    assert [%Rectangle{}] = Repo.all(Rectangle)
+    assert :ok == Canvas.clear_canvas()
+    assert [] == Repo.all(Rectangle)
+  end
 end
