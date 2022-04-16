@@ -23,8 +23,7 @@ defmodule Canvas do
   #         String.t(),
   #         String.t()
   #       ) :: {:ok, Rectangle.t()} || {:error, Ecto.Changeset.t()}
-  def draw_rectangle(x, y, width, height, fill \\ nil, line \\ nil) do
-    params = %{x: x, y: y, width: width, height: height, fill: fill, line: line}
+  def draw_rectangle(params) do
     Rectangles.create_rectangle(params)
   end
 

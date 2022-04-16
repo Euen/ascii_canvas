@@ -30,6 +30,30 @@ defmodule Canvas.RectanglesTest do
       assert rectangle.y == 42
     end
 
+    test "create_rectangle/1 with valid data but fill_char missing creates a rectangle" do
+      valid_attrs = %{height: 42, outline_char: "X", width: 42, x: 42, y: 42}
+
+      assert {:ok, %Rectangle{} = rectangle} = Rectangles.create_rectangle(valid_attrs)
+      assert rectangle.fill_char == nil
+      assert rectangle.height == 42
+      assert rectangle.outline_char == "X"
+      assert rectangle.width == 42
+      assert rectangle.x == 42
+      assert rectangle.y == 42
+    end
+
+    test "create_rectangle/1 with valid data but outline_char missing creates a rectangle" do
+      valid_attrs = %{height: 42, fill_char: "X", width: 42, x: 42, y: 42}
+
+      assert {:ok, %Rectangle{} = rectangle} = Rectangles.create_rectangle(valid_attrs)
+      assert rectangle.fill_char == "X"
+      assert rectangle.height == 42
+      assert rectangle.outline_char == nil
+      assert rectangle.width == 42
+      assert rectangle.x == 42
+      assert rectangle.y == 42
+    end
+
     test "create_rectangle/1 with invalid data returns error changeset" do
       max_width = Canvas.config([:canvas_max_width])
       max_height = Canvas.config([:canvas_max_height])
@@ -39,7 +63,8 @@ defmodule Canvas.RectanglesTest do
         %{fill_char: "@", height: 42, outline_char: " ", width: 42, x: 42, y: 42},
         %{fill_char: "@", height: 42, outline_char: "X", width: max_width + 1, x: 42, y: 42},
         %{fill_char: "@", height: 42, outline_char: "X", width: 42, x: max_width + 1, y: 42},
-        %{fill_char: "@", height: 42, outline_char: "X", width: 42, x: 42, y: max_height + 1}
+        %{fill_char: "@", height: 42, outline_char: "X", width: 42, x: 42, y: max_height + 1},
+        %{height: 42, width: 42, x: 42, y: 42}
       ]
       Enum.each(invalid_convinations, fn invalid_attrs ->
         assert {:error, %Ecto.Changeset{}} = Rectangles.create_rectangle(invalid_attrs)

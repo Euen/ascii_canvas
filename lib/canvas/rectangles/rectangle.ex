@@ -1,6 +1,7 @@
 defmodule Canvas.Rectangles.Rectangle do
   use Ecto.Schema
   import Ecto.Changeset
+  import Canvas.Changeset
 
   @type t :: %__MODULE__{
     x: integer(),
@@ -36,6 +37,7 @@ defmodule Canvas.Rectangles.Rectangle do
     |> validate_inclusion(:height, 0..max_height())
     |> validate_format(:outline_char, ~r/^[\\0-\x7f]{1}$/)
     |> validate_format(:fill_char, ~r/^[\\0-\x7f]{1}$/)
+    |> validate_required_inclusion([:outline_char, :fill_char])
   end
 
   defp max_width(), do: Canvas.config([:canvas_max_width])
