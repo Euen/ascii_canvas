@@ -1,5 +1,9 @@
 <h1>Canvas</h1>
 
-<div id={@canvas.id}>
-  <%= @canvas.render %>
+<div id="canvas_container">
+<span>----------</span>
+  <div id={@canvas.id}>
+    <%= raw @canvas.render %>
+  </div>
+<span>----------</span>
 </div>

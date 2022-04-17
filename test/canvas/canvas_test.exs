@@ -5,8 +5,8 @@ defmodule Canvas.CanvasTest do
 
   test "draw a new rectangle with valid parameters" do
     valid_params = [
-      %{x: 2, y: 3, width: 20, height: 5, fill_char: "X"},
-      %{x: 2, y: 3, width: 20, height: 5, outline_char: "@"}
+      %{x: 2, y: 0, width: 3, height: 5, fill_char: "X"},
+      %{x: 2, y: 0, width: 3, height: 5, outline_char: "@"}
     ]
 
     Enum.each(valid_params, fn params ->
@@ -15,7 +15,7 @@ defmodule Canvas.CanvasTest do
   end
 
   test "clear the canvas" do
-    Canvas.draw_rectangle(%{x: 2, y: 3, width: 20, height: 5, fill_char: "X"})
+    Canvas.draw_rectangle(%{x: 1, y: 0, width: 4, height: 5, fill_char: "X"})
     assert [%Rectangle{}] = Repo.all(Rectangle)
     assert :ok == Canvas.clear_canvas()
     assert [] == Repo.all(Rectangle)

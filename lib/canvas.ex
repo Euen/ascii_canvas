@@ -29,9 +29,8 @@ defmodule Canvas do
   It clear the canvas deleting all the drawings
   """
   @spec clear_canvas() :: :ok
-  def clear_canvas() do
-    Rectangles.delete_rectangles()
-  end
+  defdelegate clear_canvas(), to: Rectangles, as: :delete_rectangles
+
   @doc """
   Looks up `Application` config or raises if keyspace is not configured.
 

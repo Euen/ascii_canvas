@@ -87,3 +87,7 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+#canvas_container {
+  font-family: "Courier New", Courier, monospace;
+}

@@ -12,11 +12,11 @@ defmodule Canvas.RectanglesFixtures do
       attrs
       |> Enum.into(%{
         fill_char: "@",
-        height: 42,
+        height: 3,
         outline_char: "X",
-        width: 42,
-        x: 42,
-        y: 42
+        width: 3,
+        x: 0,
+        y: 0
       })
       |> Canvas.Rectangles.create_rectangle()
 
