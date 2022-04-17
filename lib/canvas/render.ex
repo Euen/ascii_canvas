@@ -69,7 +69,7 @@ defmodule Canvas.Render do
           new_canvas_row =
             Enum.slice(canvas_row, 0, start_draw_col) ++
               Enum.at(rectangle_draw, rectangle_row) ++
-              Enum.slice(canvas_row, end_draw_col, end_canvas_col)
+              Enum.slice(canvas_row, end_draw_col + 1, end_canvas_col)
 
           {[new_canvas_row | new_canvas], rectangle_row + 1}
 

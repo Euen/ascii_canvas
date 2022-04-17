@@ -41,7 +41,7 @@ defmodule Canvas.Rectangles.Rectangle do
   end
 
   defp validate_width(%{changes: %{x: x_pos, width: width}} = changeset) do
-    if width >= 3 and x_pos + width - 1 <= max_width() do
+    if width >= 3 and x_pos + width <= max_width() do
       changeset
     else
       add_error(changeset, :width, "invalid width")
@@ -51,7 +51,7 @@ defmodule Canvas.Rectangles.Rectangle do
   defp validate_width(changeset), do: changeset
 
   defp validate_height(%{changes: %{y: y_pos, height: height}} = changeset) do
-    if height >= 3 and y_pos + height - 1 <= max_height() do
+    if height >= 3 and y_pos + height <= max_height() do
       changeset
     else
       add_error(changeset, :height, "invalid height")
