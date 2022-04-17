@@ -1,10 +1,6 @@
 defmodule Canvas do
   @moduledoc """
-  Canvas keeps the contexts that define your domain
-  and business logic.
-
-  Contexts are also responsible for managing your data, regardless
-  if it comes from the database, an external API or others.
+  API for interacting with the Canvas
   """
   alias Canvas.Rectangles
   alias Canvas.Rectangles.Rectangle
@@ -21,6 +17,10 @@ defmodule Canvas do
   - `outline_char` :string, the character to draw the outline of the rectangle
 
   **Note:** Either `fill_char` or `outline_char` should be specifyed.
+
+    ## Examples
+
+      iex> Canvas.draw_rectangle(%{x: 2, y: 0, width: 3, height: 5, fill_char: ".", outline_char: "X"})
   """
   @spec draw_rectangle(map) :: {:ok, Rectangle.t()} | {:error, Ecto.Changeset.t()}
   defdelegate draw_rectangle(params), to: Rectangles, as: :create_rectangle
