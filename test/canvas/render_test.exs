@@ -3,7 +3,6 @@ defmodule Canvas.RenderTest do
 
   import Canvas.RectanglesFixtures
 
-  alias Canvas.Rectangles.Rectangle
   alias Canvas.Render
 
   test "render a series of rectangles previously stored" do
