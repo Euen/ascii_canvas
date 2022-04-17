@@ -1,4 +1,11 @@
 defmodule Canvas.Render do
+  alias Canvas.Rectangles.Rectangle
+
+  @doc """
+  It takes a list of `Rectangle` and draws them on a canvas of fixed size.
+  The last Rectangles are going to appear over the first ones if they overlap.
+  """
+  @spec rectangles([Rectangle.t()]) :: binary
   def rectangles(rectangles) do
     empty_canvas = new_canvas()
 
@@ -47,6 +54,8 @@ defmodule Canvas.Render do
   end
 
   defp put_in_canvas(rectangle_draw, rectangle, canvas) do
+    # Every time we involve width or height to calculate an index position
+    # we need to substract one since the indexes start from cero.
     start_draw_row = rectangle.y
     end_draw_row = start_draw_row + rectangle.height - 1
     start_draw_col = rectangle.x
